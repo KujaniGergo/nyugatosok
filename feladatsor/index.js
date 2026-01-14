@@ -15,7 +15,7 @@ const adatTomb = [ //Adattomb létrehozása
     { 
         szerzo: "Ady Endre", //Szerző adatai
         mu: "Őrizem a szemed", //Mű adatai
-        fogalmak1: "Csinszka vers", //Fogalmak 1 adatai
+        fogalmak1: "Csinszka-vers", //Fogalmak 1 adatai
         fogalmak2: "hitvesi költészet", //Fogalmak 2 adatai
     },
     { 
@@ -42,29 +42,35 @@ const adatTomb = [ //Adattomb létrehozása
     }
 ]
 
-//Tábla elemeinek létrehozása
+/**
+ * @type {HTMLDivElement} //Js ssection div
+ */
+const jsSecDiv = document.createElement("div"); //divet keszitek
 /**
  * @type {HTMLTableElement} //Table típusa
  */
-const table = document.createElement("table") 
+const table = document.createElement("table") //Tábla létrehozása
 /**
  * @type {HTMLTableSectionElement}  //Thead típus
  */
-const tableHead = document.createElement("thead");
+const tableHead = document.createElement("thead"); //Címsor létrehozása
 /**
  * @type {HTMLTableSectionElement} //Tbody Típusa
  */
-const tableBody = document.createElement("tbody"); 
+const tableBody = document.createElement("tbody"); //Tábla törzs létrehozása
 /**
  * @type {HTMLTableRowElement} //Sor típusa
  */
-const cimSor = document.createElement("tr"); 
+const cimSor = document.createElement("tr"); //Sor létrehozása
+
+jsSecDiv.id = "jssection"; //Id megadása
 
 //Tábla elemeinek összefűzése
-document.body.appendChild(table) //Tábla elemeinek Összefűzése
+document.body.appendChild(jsSecDiv) //Tábla elemeinek Összefűzése
 table.appendChild(tableHead); //Tábla elemeinek Összefűzése
 table.appendChild(tableBody); //Tábla elemeinek Összefűzése
 tableHead.appendChild(cimSor); //Tábla elemeinek Összefűzése
+jsSecDiv.appendChild(table) //Tábla elemeinek Összefűzése
 
 
 /**
@@ -125,12 +131,12 @@ function renderTable(adatTomb, body){  //Függvény deklarálása
         /**
          * @type {HTMLTableCellElement}  //Cella típusának megadása
          */
-        const cella1 = cellaLetrehozas(a.szerzo, sor)  //Cella generálás függvénnyel
+        cellaLetrehozas(a.szerzo, sor)  //Cella generálás függvénnyel
 
         /** 
          * @type {HTMLTableCellElement} //Cella típusának megadása
          */
-        const cella2 = cellaLetrehozas(a.mu, sor) //Cella generálás függvénnyel
+        cellaLetrehozas(a.mu, sor) //Cella generálás függvénnyel
 
         /**
          * @type {HTMLTableCellElement} //Cella típusának megadása
@@ -143,7 +149,7 @@ function renderTable(adatTomb, body){  //Függvény deklarálása
              */
             cellaLetrehozas(a.fogalmak2, sor) //Cella generálás függvénnyel
         }
-        else{ 
+        else{ //Ha mégs utolsó két cella összevonása
             cella3.colSpan = 2 //cellák összevonása
         }
     }
@@ -168,12 +174,12 @@ function ujSorHozzaAd(ujSor, tableBody){ //Függvény definiálása
     /**
      * @type {HTMLTableCellElement} //Cella típus
      */
-    const cell1 = cellaLetrehozas(ujSor.szerzo, row); //Cella létrehozása
+    cellaLetrehozas(ujSor.szerzo, row); //Cella létrehozása
 
     /**
      * @type {HTMLTableCellElement} //Cella típus 
      */
-    const cell2 = cellaLetrehozas(ujSor.mu, row); //Cella létrehozása
+    cellaLetrehozas(ujSor.mu, row); //Cella létrehozása
 
     /**
      * @type {HTMLTableCellElement} //Cella típus
@@ -181,10 +187,13 @@ function ujSorHozzaAd(ujSor, tableBody){ //Függvény definiálása
     const cell3 = cellaLetrehozas(ujSor.fogalmak1, row); //Cella létrehozása
 
     if(ujSor.fogalmak2){ //Megnézzük fogalmak 2 undefined e
-     const cell4 = cellaLetrehozas(ujSor.fogalmak2, row); //Cella létrehozása
+     /**
+     * @type {HTMLTableCellElement} //Cella típus
+     */
+    cellaLetrehozas(ujSor.fogalmak2, row); //Cella létrehozása
 
-    }else{
-    cell3.colSpan = 2; //Ha nem utolsó 2 cella összevonása
+    }else{ //Ha nem utolsó 2 cella összevonása
+    cell3.colSpan = 2; //A cellák összevonása
     }
 }
 
@@ -196,7 +205,7 @@ function ujSorHozzaAd(ujSor, tableBody){ //Függvény definiálása
  */
 const szimplaJsGomb = document.createElement("button"); //Gomb létrehozása
 szimplaJsGomb.innerText = "Szimpla sor"; //Gomb szövegének megadása
-document.body.appendChild(szimplaJsGomb); //Gomb body hoz csatolása
+jsSecDiv.appendChild(szimplaJsGomb); //Gomb body hoz csatolása
 
 szimplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
     /**
@@ -217,7 +226,7 @@ szimplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk
  */
 const duplaJsGomb = document.createElement("button"); //Gomb létrehozása
 duplaJsGomb.innerText = "Dupla sor"; //Gomb szövegének megadása
-document.body.appendChild(duplaJsGomb); //Gomb body hoz csatolása
+jsSecDiv.appendChild(duplaJsGomb); //Gomb body hoz csatolása
 
 duplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
     /**
@@ -281,3 +290,6 @@ duplaHtmlGomb.addEventListener("click", function(){ //Event listener hogy tudjuk
 
     ujSorHozzaAd(ujSor, tableBody); //Sor hozzáadás függvény meghívása
 });
+
+
+

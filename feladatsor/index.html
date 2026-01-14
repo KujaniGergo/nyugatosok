@@ -17,13 +17,16 @@
     </style>
 </head>
 <body>
+    <input type="checkbox" id="tableselector">
+    <label for="tableselector">Tábla váltás</label>
+    <div id="htmlsection">
     <table>
         <thead>
             <tr>
                 <th>Szerző</th>
                 <th>Mű</th>
-                <th>Fogalmak</th>
-                <th></th>
+                <th colspan="2" >Fogalmak</th>
+
             </tr>
         </thead>
         <tbody id="htmlBody" >
@@ -36,8 +39,8 @@
             <tr>
                 <td>Babits Mihály</td>
                 <td>In Horatium</td>
-                <td>óda</td>
-                <td></td>
+                <td colspan="2" >Óda</td>
+
             </tr>
             <tr>
                 <td>Kosztolányi Dezső</td>
@@ -48,19 +51,21 @@
 			<tr>
                 <td>Kosztolányi Dezső</td>
                 <td>Édes Anna</td>
-                <td>regény</td>
-                <td></td>
+                <td colspan="2" >regény</td>
+
             </tr>
             <tr>
                 <td>Móricz Zsigmond</td>
                 <td>Tragédia</td>
                 <td>novella</td>
-                <td>dzentri</td>
+                <td>dzsentri</td>
             </tr>  
         </tbody>
     </table>
     <button id="szimpla"></button>
     <button id="dupla"></button>
+    </div>
+
     <script src="./index.js"></script>
 </body>
 </html>
