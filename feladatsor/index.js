@@ -82,42 +82,4 @@ cimSorKiiras(cimSorTomb,cimSor); //Függvény meghívása
 renderTable(adatTomb,tableBody); //Függvény meghívása
 checkBoxFrissit(checkBox) //Függvény meghívása
 checkBox.addEventListener("change", checkBoxValtozas) //Függvény meghívása
-
-
-
-//Form generálás
-/**
- * @type {HTMLFormElement} //A from típusa
- */
-const jsForm = document.createElement("form") //Form létrehozása
-jsForm.id = "jsform" //Form id megadása
-jsSecDiv.appendChild(jsForm)  //Form a div hez fűzése
-/**
- * @type {{cimke:string,id:string,nev:string}[]} //A mezők típusa
- */
-const formMezok = [ //A mezők tömb
-    { 
-        cimke: 'Szerző', //Cimke Adat
-        id: 'elso', //Id Adat
-        nev: 'szerzo' //Név Adat
-    },
-    { 
-        cimke: 'Mű', //Cimke Adat
-        id: 'masodik', //Id Adat
-        nev: 'mu' //Név Adat
-    },
-    { 
-        cimke: 'Fogalom1', //Cimke Adat
-        id: 'harmadik', //Id Adat
-        nev: 'fogalom1' //Név Adat
-    },
-    { 
-        cimke: 'Fogalom2', //Cimke Adat
-        id: 'negyedik', //Id Adat
-        nev: 'fogalom2' //Név Adat
-    }
-]
-
-for(const mezo of formMezok){ //Tömb bejárása
-    formGeneralas(mezo.cimke, mezo.id, mezo.nev, jsForm) //A from geneálása a tömb adataiból
-}
+formAdatFeltoltes(jsSecDiv); //Függvény meghívása
