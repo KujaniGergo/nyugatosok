@@ -292,17 +292,28 @@ duplaHtmlGomb.addEventListener("click", function(){ //Event listener hogy tudjuk
 });
 
 
+
 /**
- * @type {HTMLSelectElement} //Típis megadása
+ * @type {HTMLInputElement} //A droppdown input típusa
  */
-const selectTabla = document.getElementById("tableselector") //Droppdown lekérése
-selectTabla.addEventListener("change", function(e){ //Eventlistener
-
+const checkBox = document.getElementById("tableselector") //Checkbox lekérése
+checkBoxFrissit(checkBox) //Függvény meghívása
+checkBox.addEventListener("change", function(e){ //Eventlistener
     /**
-     * @type {HTMLSelectElement} //Típus megadása
+     * @type {HTMLInputElement} //Típus megadása
      */
-    const target = e.target //Target amit figyelünk
+    const target = e.target //Target változó
+    checkBoxFrissit(target) //Csheck box függvény mehgívás
+    
+})
 
+
+/**
+ * Függvény ami a checkbox állapotát ellenőrzi
+ * @param {HTMLInputElement} input //A droppdown típusa
+ * @returns {void} //Amivel visszatér a függvény
+ */
+function checkBoxFrissit(input){ //A függvény definiálása
     /**
      * @type {HTMLDivElement} //Típus megadása
      */
@@ -314,7 +325,7 @@ selectTabla.addEventListener("change", function(e){ //Eventlistener
     const jsSection = document.getElementById("jssection") //Js szekció
 
     
-    if(target.checked){ //Ha a droppdown html-en van
+    if(input.checked){ //Ha a droppdown html-en van
         jsSection.classList.add("hide") //Js rejtése
         htmlSec.classList.remove("hide") //Html megjelenítése
     }
@@ -322,4 +333,4 @@ selectTabla.addEventListener("change", function(e){ //Eventlistener
         jsSection.classList.remove("hide") //Js megjelenítése
         htmlSec.classList.add("hide") //Html rejtése
     }
-});
+}
