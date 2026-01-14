@@ -46,7 +46,14 @@ const adatTomb = [ //Adattomb létrehozása
 
 
 
-//Tábla elemeinek létrehozása
+/**
+ * @type {HTMLDivElement} //Js ssection div
+ */
+const jsSecDiv = document.createElement("div"); //divet keszitek
+/**
+ * @type {HTMLDivElement} //Js gomb div
+ */
+const jsSecGomb = document.createElement("div"); //divet keszitek
 /**
  * @type {HTMLTableElement} //Table típusa
  */
@@ -64,13 +71,19 @@ const tableBody = document.createElement("tbody");
  */
 const cimSor = document.createElement("tr"); 
 
-
+jsSecDiv.id = "jssection"; //Id megadása
+jsSecDiv.classList.add("hide") //Alapól rejtett
+jsSecGomb.id = "jsgomb" //Id megadása
+jsSecGomb.classList.add("hide") //Alapól rejtett
 
 //Tábla elemeinek összefűzése
-document.body.appendChild(table) //Tábla elemeinek Összefűzése
+document.body.appendChild(jsSecDiv) //Tábla elemeinek Összefűzése
+document.body.appendChild(jsSecGomb) //Tábla elemeinek Összefűzése
 table.appendChild(tableHead); //Tábla elemeinek Összefűzése
 table.appendChild(tableBody); //Tábla elemeinek Összefűzése
 tableHead.appendChild(cimSor); //Tábla elemeinek Összefűzése
+jsSecDiv.appendChild(table) //Tábla elemeinek Összefűzése
+
 
 
 /**
@@ -203,8 +216,8 @@ function ujSorHozzaAd(ujSor, tableBody){ //Függvény definiálása
  * @type {HTMLButtonElement} //A gomb típusa
  */
 const szimplaJsGomb = document.createElement("button"); //Gomb létrehozása
+jsSecGomb.appendChild(szimplaJsGomb); //Divhez fűzés
 szimplaJsGomb.innerText = "Szimpla sor"; //Gomb szövegének megadása
-document.body.appendChild(szimplaJsGomb); //Gomb body hoz csatolása
 
 szimplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
     /**
@@ -226,8 +239,8 @@ szimplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk
  * @type {HTMLButtonElement} //A gomb típusa
  */
 const duplaJsGomb = document.createElement("button"); //Gomb létrehozása
+jsSecGomb.appendChild(duplaJsGomb); //Divhez fűzés
 duplaJsGomb.innerText = "Dupla sor"; //Gomb szövegének megadása
-document.body.appendChild(duplaJsGomb); //Gomb body hoz csatolása
 
 duplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
     /**
@@ -295,3 +308,71 @@ duplaHtmlGomb.addEventListener("click", function(){ //Event listener hogy tudjuk
 
     ujSorHozzaAd(ujSor, tableBody); //Sor hozzáadás függvény meghívása
 });
+
+
+
+/**
+ * @type {HTMLSelectElement} //Típis megadása
+ */
+const selectTabla = document.getElementById("tableselector") //Droppdown lekérése
+selectTabla.addEventListener("change", function(e){ //Eventlistener
+
+    /**
+     * @type {HTMLSelectElement} //Típus megadása
+     */
+    const target = e.target //Target amit figyelünk
+
+
+    /**
+     * @type {HTMLDivElement} //Típus megadása
+     */
+    const htmlSec = document.getElementById("htmlsection") //Html szekció
+
+    /**
+     * @type {HTMLDivElement} //Típus megadása
+     */
+    const jsSection = document.getElementById("jssection") //Js szekció
+
+    
+    if(target.value == "html"){ //Ha a droppdown html-en van
+        jsSection.classList.add("hide") //Js rejtése
+        htmlSec.classList.remove("hide") //Html megjelenítése
+    }
+    else if(target.value == "js"){ //Ha a droppdown js-en van
+        jsSection.classList.remove("hide") //Js megjelenítése
+        htmlSec.classList.add("hide") //Html rejtése
+    }
+});
+
+
+/**
+ * @type {HTMLSelectElement} //Típus megadása
+ */
+const selectGomb = document.getElementById("tableselector") //Droppdown lekérése
+selectGomb.addEventListener("change", function(e){ //Eventlistener
+
+    /**
+     * @type {HTMLSelectElement} //Típus megadása
+     */
+    const target = e.target 
+
+    /**
+     * @type {HTMLDivElement} //Típus megadása
+     */
+    const htmlSec = document.getElementById("htmlbuttons") //Html szekció
+
+    /**
+     * @type {HTMLDivElement}
+     */
+    const jsSection = document.getElementById("jsgomb") //Js szekció
+
+    
+    if(target.value == "html"){ //Ha a droppdown html-en van
+        jsSection.classList.add("hide") //Js rejtése
+        htmlSec.classList.remove("hide") //Html megjelenítése
+    }
+    else if(target.value == "js"){ //Ha a droppdown js-en van
+        jsSection.classList.remove("hide") //Js megjelenítése
+        htmlSec.classList.add("hide") //Html rejtése
+    }
+}); 
