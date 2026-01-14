@@ -175,3 +175,42 @@ function checkBoxFrissit(input){ //A függvény definiálása
 }
 
 
+
+/**
+ * Függvény a form generálására
+ * @param {string} cimkeSzoveg //A label szövege
+ * @param {string} id //Ad id
+ * @param {string} nev //A neve
+ * @param {HTMLFormElement} form //A form
+ * @returns {void} //Amivel visszatér a függvény
+ */
+function formGeneralas(cimkeSzoveg, id, nev, form){ //Függvény deklarálás
+    /**
+     * @type {HTMLDivElement} //Típus megadása
+     */
+    const formDiv = document.createElement("div") //A from div létrehozása
+    form.appendChild(formDiv) //A formhoz hozzáfűzzük
+
+    /**
+     * @type {HTMLLabelElement} //Típus megadása
+     */
+    const label = document.createElement("label") //Lable létrehozása
+    label.htmlFor = id //Id megadása
+    label.innerText = cimkeSzoveg //Inner textelés a szöveggel
+    formDiv.appendChild(label) //Label hozzáfűzése a formdiv hez
+
+     /**
+     * @type {HTMLInputElement} //Típus megadása
+     */
+    const input = document.createElement("input") //Input mező létrehozása
+    input.id = id //Id megadása
+    input.nev = nev //Név megadása
+    formDiv.appendChild(input) //Form divhez fűzése
+
+    /**
+     * @type {HTMLDivElement} //Típus megadása
+     */
+    const error = document.createElement("div") //Error létrehozása
+    error.classList.add("error") //Class megadása
+    formDiv.appendChild(error) //Form div hez fűzés
+}
