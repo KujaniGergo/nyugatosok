@@ -42,7 +42,10 @@ const adatTomb = [ //Adattomb létrehozása
     }
 ]
 
-//Tábla elemeinek létrehozása
+/**
+ * @type {HTMLDivElement} //Js ssection div
+ */
+const jsSecDiv = document.createElement("div"); //divet keszitek
 /**
  * @type {HTMLTableElement} //Table típusa
  */
@@ -50,21 +53,24 @@ const table = document.createElement("table") //Tábla létrehozása
 /**
  * @type {HTMLTableSectionElement}  //Thead típus
  */
-const tableHead = document.createElement("thead"); //Fejléc létrehozása
+const tableHead = document.createElement("thead"); //Címsor létrehozása
 /**
  * @type {HTMLTableSectionElement} //Tbody Típusa
  */
-const tableBody = document.createElement("tbody");  //Tábla törzs létrehozása
+const tableBody = document.createElement("tbody"); //Tábla törzs létrehozása
 /**
  * @type {HTMLTableRowElement} //Sor típusa
  */
-const cimSor = document.createElement("tr");  //Címsor létrehozása
+const cimSor = document.createElement("tr"); //Sor létrehozása
+
+jsSecDiv.id = "jssection"; //Id megadása
 
 //Tábla elemeinek összefűzése
-document.body.appendChild(table) //Tábla elemeinek Összefűzése
+document.body.appendChild(jsSecDiv) //Tábla elemeinek Összefűzése
 table.appendChild(tableHead); //Tábla elemeinek Összefűzése
 table.appendChild(tableBody); //Tábla elemeinek Összefűzése
 tableHead.appendChild(cimSor); //Tábla elemeinek Összefűzése
+jsSecDiv.appendChild(table) //Tábla elemeinek Összefűzése
 
 
 /**
@@ -199,7 +205,7 @@ function ujSorHozzaAd(ujSor, tableBody){ //Függvény definiálása
  */
 const szimplaJsGomb = document.createElement("button"); //Gomb létrehozása
 szimplaJsGomb.innerText = "Szimpla sor"; //Gomb szövegének megadása
-document.body.appendChild(szimplaJsGomb); //Gomb body hoz csatolása
+jsSecDiv.appendChild(szimplaJsGomb); //Gomb body hoz csatolása
 
 szimplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
     /**
@@ -220,7 +226,7 @@ szimplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk
  */
 const duplaJsGomb = document.createElement("button"); //Gomb létrehozása
 duplaJsGomb.innerText = "Dupla sor"; //Gomb szövegének megadása
-document.body.appendChild(duplaJsGomb); //Gomb body hoz csatolása
+jsSecDiv.appendChild(duplaJsGomb); //Gomb body hoz csatolása
 
 duplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
     /**
@@ -283,4 +289,37 @@ duplaHtmlGomb.addEventListener("click", function(){ //Event listener hogy tudjuk
 
 
     ujSorHozzaAd(ujSor, tableBody); //Sor hozzáadás függvény meghívása
+});
+
+
+/**
+ * @type {HTMLSelectElement} //Típis megadása
+ */
+const selectTabla = document.getElementById("tableselector") //Droppdown lekérése
+selectTabla.addEventListener("change", function(e){ //Eventlistener
+
+    /**
+     * @type {HTMLSelectElement} //Típus megadása
+     */
+    const target = e.target //Target amit figyelünk
+
+    /**
+     * @type {HTMLDivElement} //Típus megadása
+     */
+    const htmlSec = document.getElementById("htmlsection") //Html szekció
+
+    /**
+     * @type {HTMLDivElement} //Típus megadása
+     */
+    const jsSection = document.getElementById("jssection") //Js szekció
+
+    
+    if(target.checked){ //Ha a droppdown html-en van
+        jsSection.classList.add("hide") //Js rejtése
+        htmlSec.classList.remove("hide") //Html megjelenítése
+    }
+    else{ //Ha a droppdown js-en van
+        jsSection.classList.remove("hide") //Js megjelenítése
+        htmlSec.classList.add("hide") //Html rejtése
+    }
 });
