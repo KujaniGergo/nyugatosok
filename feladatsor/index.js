@@ -291,5 +291,36 @@ duplaHtmlGomb.addEventListener("click", function(){ //Event listener hogy tudjuk
     ujSorHozzaAd(ujSor, tableBody); //Sor hozzáadás függvény meghívása
 });
 
+/**
+ * @type {HTMLSelectElement} //Típis megadása
+ */
+const selectTabla = document.getElementById("tableselector") //Droppdown lekérése
+selectTabla.addEventListener("change", function(e){ //Eventlistener
+
+    /**
+     * @type {HTMLSelectElement} //Típus megadása
+     */
+    const target = e.target //Target amit figyelünk
+
+    /**
+     * @type {HTMLDivElement} //Típus megadása
+     */
+    const htmlSec = document.getElementById("htmlsection") //Html szekció
+
+    /**
+     * @type {HTMLDivElement} //Típus megadása
+     */
+    const jsSection = document.getElementById("jssection") //Js szekció
+
+    
+    if(target.checked){ //Ha a droppdown html-en van
+        jsSection.classList.add("hide") //Js rejtése
+        htmlSec.classList.remove("hide") //Html megjelenítése
+    }
+    else{ //Ha a droppdown js-en van
+        jsSection.classList.remove("hide") //Js megjelenítése
+        htmlSec.classList.add("hide") //Html rejtése
+    }
+});
 
 
