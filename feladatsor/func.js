@@ -49,9 +49,9 @@ function cellaLetrehozas(tartalom, parent){ //Függvény definiálása
  * @param {HTMLTableSectionElement} body //A body amiben generáljuk a cellákat
  * @returns {void} //A függvény visszatérési értéke
  */
-function renderTable(adatTomb, body){  //Függvény deklarálása
+function tablaKiiras(adatTomb, body){  //Függvény deklarálása
 
-    body.innerHTML = ""; //A body ürítése hogy ne írja ki az egész függvényt mindig
+    body.innerHTML = "" //A body ürítése hogy ne írja ki az egész függvényt mindig
 
     for(const a of adatTomb){  //Adat tömb bejárása
         
@@ -236,24 +236,24 @@ function formAdatFeltoltes(section){ //Függvény definiálás
      */
     const formMezok = [ //A mezők tömb
         { 
-            cimke: 'Szerző', //Cimke Adat
-            id: 'elso', //Id Adat
-            nev: 'szerzo' //Név Adat
+            cimke: "Szerző", //Cimke Adat
+            id: "elso", //Id Adat
+            nev: "szerzo" //Név Adat
         },
         { 
-            cimke: 'Mű', //Cimke Adat
-            id: 'masodik', //Id Adat
-            nev: 'mu' //Név Adat
+            cimke: "Mű", //Cimke Adat
+            id: "masodik", //Id Adat
+            nev: "mu" //Név Adat
         },
         { 
-            cimke: 'Fogalom1', //Cimke Adat
-            id: 'harmadik', //Id Adat
-            nev: 'fogalom1' //Név Adat
+            cimke: "Fogalom1", //Cimke Adat
+            id: "harmadik", //Id Adat
+            nev: "fogalom1" //Név Adat
         },
         { 
-            cimke: 'Fogalom2', //Cimke Adat
-            id: 'negyedik', //Id Adat
-            nev: 'fogalom2' //Név Adat
+            cimke: "Fogalom2", //Cimke Adat
+            id: "negyedik", //Id Adat
+            nev: "fogalom2" //Név Adat
         }
     ]
 

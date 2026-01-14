@@ -70,6 +70,7 @@ const cimSor = document.createElement("tr"); //Sor létrehozása
 const checkBox = document.getElementById("tableselector") //Checkbox lekérése
 
 jsSecDiv.id = "jssection"; //Id megadása
+tableBody.id = "tb"; //Id megadása
 
 //Tábla elemeinek összefűzése
 document.body.appendChild(jsSecDiv) //Tábla elemeinek Összefűzése
@@ -79,7 +80,68 @@ tableHead.appendChild(cimSor); //Tábla elemeinek Összefűzése
 jsSecDiv.appendChild(table); //Tábla elemeinek Összefűzése
 
 cimSorKiiras(cimSorTomb,cimSor); //Függvény meghívása
-renderTable(adatTomb,tableBody); //Függvény meghívása
+tablaKiiras(adatTomb,tableBody); //Függvény meghívása
 checkBoxFrissit(checkBox) //Függvény meghívása
 checkBox.addEventListener("change", checkBoxValtozas) //Függvény meghívása
 formAdatFeltoltes(jsSecDiv); //Függvény meghívása
+
+
+//Eseménykezelő
+/**
+ * @type {HTMLFormElement} //Típus megadása
+ */
+jsSecDiv.addEventListener("submit", function(e){ //Event listener
+    e.preventDefault() //Hogy nem fusson alapból
+    /**
+     * @type {HTMLFormElement}  //Típus megadása
+     */
+    const target = e.target //Target
+    /**
+     * @type {HTMLInputElement}  //Típus megadása
+     */
+    const inputSzerzo = target.querySelector("#elso") //Mezők léterhozása
+    /**
+     * @type {HTMLInputElement}  //Típus megadása
+     */
+    const inputMu = target.querySelector("#masodik") //Mezők léterhozása
+    /**
+     * @type {HTMLInputElement}  //Típus megadása
+     */
+    const inputFogalomElso = target.querySelector("#harmadik") //Mezők léterhozása
+    /**
+     * @type {HTMLInputElement}  //Típus megadása
+     */
+    const inputFogalomMasodik = target.querySelector("#negyedik") //Mezők léterhozása
+    /**
+     * @type {string}  //Típus megadása
+     */
+    const szerzoErtek = inputSzerzo.value //Value megadása
+    /**
+     * @type {string}  //Típus megadása
+     */
+    const muErtek = inputMu.value //Value megadása
+    /**
+     * @type {string}  //Típus megadása
+     */
+    const fogalomElsoErtek = inputFogalomElso.value //Value megadása
+    /**
+     * @type {string}  //Típus megadása
+     */
+    const fogalomMasodikErtek = inputFogalomMasodik.value //Value megadása
+    /**
+     * @type {string[]}  //Típus megadása
+     */
+    const ujObjektum = {} //Új objektum deklarálás
+
+    ujObjektum.szerzo = szerzoErtek //Az objeltum elemei
+    ujObjektum.mu = muErtek //Az objeltum elemei
+    ujObjektum.fogalmak1 = fogalomElsoErtek //Az objeltum elemei
+    ujObjektum.fogalmak2 = fogalomMasodikErtek //Az objeltum elemei
+    adatTomb.push(ujObjektum) //Az objeltum elemei
+
+    /**
+     * @type {HTMLTableSectionElement}  //Típus megadása
+     */
+    const tBody = document.getElementById("tb") //Tbody lekérése
+    tablaKiiras(adatTomb, tBody) //Tábla renderelése
+})
