@@ -195,101 +195,10 @@ function ujSorHozzaAd(ujSor, tableBody){ //Függvény definiálása
     }else{ //Ha nem utolsó 2 cella összevonása
     cell3.colSpan = 2; //A cellák összevonása
     }
-}
+};
 
 
 
-/**
- * Js gomb szimpla
- * @type {HTMLButtonElement} //A gomb típusa
- */
-const szimplaJsGomb = document.createElement("button"); //Gomb létrehozása
-szimplaJsGomb.innerText = "Szimpla sor"; //Gomb szövegének megadása
-jsSecDiv.appendChild(szimplaJsGomb); //Gomb body hoz csatolása
-
-szimplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
-    /**
-     * @type {DataType[]} //Új sor adatainak típusa
-     */
-    const ujSor = { //Új sor adatai
-        szerzo: "Test Szerző", //Szerző
-        mu: "Teszt Mű", //Mű
-        fogalmak1: "Teszt fogalmak 1" //Fogalmak 1
-    }
-    adatTomb.push(ujSor); //Új sor hozzáadása a teljes tömbhöz
-    renderTable(adatTomb, tableBody); //Függvény renderekése
-});
-
-/**
- * Js gomb dupla
- * @type {HTMLButtonElement} //A gomb típusa
- */
-const duplaJsGomb = document.createElement("button"); //Gomb létrehozása
-duplaJsGomb.innerText = "Dupla sor"; //Gomb szövegének megadása
-jsSecDiv.appendChild(duplaJsGomb); //Gomb body hoz csatolása
-
-duplaJsGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
-    /**
-     * @type {DataType[]} //Új sor adatainak típusa
-     */
-    const ujSor = { //Új sor adatai
-        szerzo: "Test Szerző", //Szerző
-        mu: "Teszt Mű", //Mű
-        fogalmak1: "Teszt fogalmak 1", //Fogalmak 1
-        fogalmak2: "Teszt fogalmak 2" //Fogalmak 2
-    }
-    adatTomb.push(ujSor); //Új sor hozzáadása a teljes tömbhöz
-    renderTable(adatTomb, tableBody); //Függvény renderekése
-});
-
-/**
- * Html gomb szimpla
- * @type {HTMLButtonElement} //A gomb típusa
- */
-const szimplaHtmlGomb = document.getElementById("szimpla");  //Gomb létrehozása
-szimplaHtmlGomb.innerText = "Szimpla sor"; //Gomb szövegének megadása
-szimplaHtmlGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
-    /**
-     * @type {DataType[]} //Új sor adatainak típusa
-     */
-    const ujSor = { //Új sor adatai
-        szerzo: "Test Szerző", //Szerző
-        mu: "Teszt Mű", //Mű
-        fogalmak1: "Teszt fogalmak 1" //Fogalmak 1
-    }
-    /**
-     * @type {HTMLDivElement} //A lekért table body típusa
-     */
-    const tableBody = document.getElementById("htmlBody")  //Table body lekérése
-
-
-    ujSorHozzaAd(ujSor, tableBody); //Sor hozzáadás függvény meghívása
-});
-
-/**
- * Html gomb dupla
- * @type {HTMLButtonElement} //A gomb típusa
- */
-const duplaHtmlGomb = document.getElementById("dupla"); //Gomb létrehozása
-duplaHtmlGomb.innerText = "Dupla sor"; //Gomb szövegének megadása
-duplaHtmlGomb.addEventListener("click", function(){ //Event listener hogy tudjuk mikor kattintanak a gombra
-    /**
-     * @type {DataType[]} //Új sor adatainak típusa
-     */
-    const ujSor = { //Új sor adatai
-        szerzo: "Test Szerző", //Szerző
-        mu: "Teszt Mű", //Mű
-        fogalmak1: "Teszt fogalmak 1", //Fogalmak 1
-        fogalmak2: "Teszt fogalmak 2" //Fogalmak 2
-    }
-    /**
-     * @type {HTMLDivElement} //A lekért table body típusa
-     */
-    const tableBody = document.getElementById("htmlBody")  //Table body lekérése
-
-
-    ujSorHozzaAd(ujSor, tableBody); //Sor hozzáadás függvény meghívása
-});
 
 /**
  * @type {HTMLSelectElement} //Típis megadása
