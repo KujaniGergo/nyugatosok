@@ -92,7 +92,32 @@ checkBox.addEventListener("change", checkBoxValtozas) //Függvény meghívása
 const jsForm = document.createElement("form") //Form létrehozása
 jsForm.id = "jsform" //Form id megadása
 jsSecDiv.appendChild(jsForm)  //Form a div hez fűzése
- formGeneralas("Szerző","elso","szerzo",jsForm) //Függvény meghívása a megfelelő paraméterekkel
-formGeneralas("Mű","masodik","mu",jsForm)  //Függvény meghívása a megfelelő paraméterekkel
-formGeneralas("Fogalom1","harmadik","fogalom1",jsForm)  //Függvény meghívása a megfelelő paraméterekkel
-formGeneralas("Fogalom2","negyedik","fogalom2", jsForm)   //Függvény meghívása a megfelelő paraméterekkel
+/**
+ * @type {{cimke:string,id:string,nev:string}[]} //A mezők típusa
+ */
+const formMezok = [ //A mezők tömb
+    { 
+        cimke: 'Szerző', //Cimke Adat
+        id: 'elso', //Id Adat
+        nev: 'szerzo' //Név Adat
+    },
+    { 
+        cimke: 'Mű', //Cimke Adat
+        id: 'masodik', //Id Adat
+        nev: 'mu' //Név Adat
+    },
+    { 
+        cimke: 'Fogalom1', //Cimke Adat
+        id: 'harmadik', //Id Adat
+        nev: 'fogalom1' //Név Adat
+    },
+    { 
+        cimke: 'Fogalom2', //Cimke Adat
+        id: 'negyedik', //Id Adat
+        nev: 'fogalom2' //Név Adat
+    }
+]
+
+for(const mezo of formMezok){ //Tömb bejárása
+    formGeneralas(mezo.cimke, mezo.id, mezo.nev, jsForm) //A from geneálása a tömb adataiból
+}
