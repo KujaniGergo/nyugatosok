@@ -1,4 +1,6 @@
-
+/**
+ * @typedef {{szerzo:string,mu:string,fogalmak1:string,fogalmak2?:string}} DataType //A tömb elemeinek típusa
+ */
 
 
 
@@ -171,4 +173,5 @@ function checkBoxFrissit(input){ //A függvény definiálása
         htmlSec.classList.add("hide") //Html rejtése
     }
 }
+
 
