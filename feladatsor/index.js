@@ -59,7 +59,7 @@ const tableHead = document.createElement("thead"); //Címsor létrehozása
 /**
  * @type {HTMLTableSectionElement} //Tbody Típusa
  */
-const tableBody = document.createElement("tbody"); //Tábla törzs létrehozása
+const jstbody = document.createElement("tbody"); //Tábla törzs létrehozása
 /**
  * @type {HTMLTableRowElement} //Sor típusa
  */
@@ -70,17 +70,17 @@ const cimSor = document.createElement("tr"); //Sor létrehozása
 const checkBox = document.getElementById("tableselector") //Checkbox lekérése
 
 jsSecDiv.id = "jssection"; //Id megadása
-tableBody.id = "tb"; //Id megadása
+jstbody.id = "jstbody"; //Id megadása
 
 //Tábla elemeinek összefűzése
 document.body.appendChild(jsSecDiv) //Tábla elemeinek Összefűzése
 table.appendChild(tableHead); //Tábla elemeinek Összefűzése
-table.appendChild(tableBody); //Tábla elemeinek Összefűzése
+table.appendChild(jstbody); //Tábla elemeinek Összefűzése
 tableHead.appendChild(cimSor); //Tábla elemeinek Összefűzése
 jsSecDiv.appendChild(table); //Tábla elemeinek Összefűzése
 
 cimSorKiiras(cimSorTomb,cimSor); //Függvény meghívása
-tablaKiiras(adatTomb,tableBody); //Függvény meghívása
+tablaKiiras(adatTomb,jstbody); //Függvény meghívása
 checkBoxFrissit(checkBox) //Függvény meghívása
 checkBox.addEventListener("change", checkBoxValtozas) //Függvény meghívása
 formAdatFeltoltes(jsSecDiv); //Függvény meghívása
@@ -153,7 +153,7 @@ jsSecDiv.addEventListener("submit", function(e){ //Event listener
     /**
      * @type {HTMLTableSectionElement}  //Típus megadása
      */
-    const tBody = document.getElementById("tb") //Tbody lekérése
+    const tBody = document.getElementById("jstbody") //Tbody lekérése
     ujSorHozzaAd(ujObjektum, tBody) //Új sor hozzáadása
 
     // Űrlap mezők törlése
@@ -226,7 +226,7 @@ htmlsection.addEventListener("submit", function(e){ //Event listener
     /**
      * @type {HTMLTableSectionElement}  //Típus megadása
      */
-    const tBody = document.getElementById("htmlBody") //Tbody lekérése
+    const tBody = document.getElementById("htmltbody") //Tbody lekérése
     ujSorHozzaAd(ujObjektum, tBody) //Új sor hozzáadása
 
     // Űrlap mezők törlése

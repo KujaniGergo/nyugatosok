@@ -76,7 +76,7 @@ function tablaKiiras(adatTomb, body){  //Függvény deklarálása
          */
         const cella3 = cellaLetrehozas(a.fogalmak1, sor) //Cella generálás függvénnyel
 
-        if(a.fogalmak2){ //Elágazása hogy fogalmak2 undefine-e, ha nem új cella létrehozása
+        if(a.fogalmak2, sor){ //Elágazása hogy fogalmak2 undefine-e, ha nem új cella létrehozása
             /**
              * @type {HTMLTableCellElement} //Cella típusának megadása
              */
@@ -119,7 +119,7 @@ function ujSorHozzaAd(ujSor, tableBody){ //Függvény definiálása
      */
     const cell3 = cellaLetrehozas(ujSor.fogalmak1, row); //Cella létrehozása
 
-    if(newRow.work2 || newRow.concept2){  //Megnézzük fogalmak 2 undefined e
+    if(ujSor.work2 || ujSor.concept2){  //Megnézzük fogalmak 2 undefined e
      /**
      * @type {HTMLTableCellElement} //Cella típus
      */
