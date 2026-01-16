@@ -86,7 +86,7 @@ checkBox.addEventListener("change", checkBoxValtozas) //Függvény meghívása
 formAdatFeltoltes(jsSecDiv); //Függvény meghívása
 
 
-//Eseménykezelő
+//Js Eseménykezelő
 /**
  * @type {HTMLFormElement} //Típus megadása
  */
@@ -112,6 +112,17 @@ jsSecDiv.addEventListener("submit", function(e){ //Event listener
      * @type {HTMLInputElement}  //Típus megadása
      */
     const inputFogalomMasodik = target.querySelector("#negyedik") //Mezők léterhozása
+
+    /**
+     * @type {NodeList} //Error ostály listálya
+     */
+    const errorDivList = target.querySelectorAll(".error") //Error div list létrehozása
+    for(const errorDiv of errorDivList){ //Lista bejárása
+        errorDiv.innerText = "" //Szöveg törlése
+    }
+
+    if(osszMezoValidalas(inputSzerzo, inputMu, inputFogalomElso, target)){ //Mezők validálása függvénnyel
+
     /**
      * @type {string}  //Típus megadása
      */
@@ -143,5 +154,85 @@ jsSecDiv.addEventListener("submit", function(e){ //Event listener
      * @type {HTMLTableSectionElement}  //Típus megadása
      */
     const tBody = document.getElementById("tb") //Tbody lekérése
-    tablaKiiras(adatTomb, tBody) //Tábla renderelése
+    ujSorHozzaAd(ujObjektum, tBody) //Új sor hozzáadása
+
+    // Űrlap mezők törlése
+    inputSzerzo.value = "" //Értékeke törlése
+    inputMu.value = "" //Értékeke törlése
+    inputFogalomElso.value = "" //Értékeke törlése
+    inputFogalomMasodik.value = "" //Értékeke törlése
+    }
+})
+
+//Html eseménykezelő
+/**
+ * @type {HTMLFormElement} //Típus megadása
+ */
+const htmlsection = document.getElementById("htmlform") //Html section lekérése
+htmlsection.addEventListener("submit", function(e){ //Event listener
+    e.preventDefault() //Hogy nem fusson alapból
+    /**
+     * @type {HTMLFormElement}  //Típus megadása
+     */
+    const target = e.target //Target
+    /**
+     * @type {HTMLInputElement}  //Típus megadása
+     */
+    const inputSzerzo = target.querySelector("#elso") //Mezők léterhozása
+    /**
+     * @type {HTMLInputElement}  //Típus megadása
+     */
+    const inputMu = target.querySelector("#masodik") //Mezők léterhozása
+    /**
+     * @type {HTMLInputElement}  //Típus megadása
+     */
+    const inputFogalomElso = target.querySelector("#harmadik") //Mezők léterhozása
+    /**
+     * @type {HTMLInputElement}  //Típus megadása
+     */
+    const inputFogalomMasodik = target.querySelector("#negyedik") //Mezők léterhozása
+
+
+
+    if(osszMezoValidalas(inputSzerzo, inputMu, inputFogalomElso, target)){ //Mezők validálása függvénnyel
+
+    /**
+     * @type {string}  //Típus megadása
+     */
+    const szerzoErtek = inputSzerzo.value //Value megadása
+    /**
+     * @type {string}  //Típus megadása
+     */
+    const muErtek = inputMu.value //Value megadása
+    /**
+     * @type {string}  //Típus megadása
+     */
+    const fogalomElsoErtek = inputFogalomElso.value //Value megadása
+    /**
+     * @type {string}  //Típus megadása
+     */
+    const fogalomMasodikErtek = inputFogalomMasodik.value //Value megadása
+    /**
+     * @type {string[]}  //Típus megadása
+     */
+    const ujObjektum = {} //Új objektum deklarálás
+
+    ujObjektum.szerzo = szerzoErtek //Az objeltum elemei
+    ujObjektum.mu = muErtek //Az objeltum elemei
+    ujObjektum.fogalmak1 = fogalomElsoErtek //Az objeltum elemei
+    ujObjektum.fogalmak2 = fogalomMasodikErtek //Az objeltum elemei
+    adatTomb.push(ujObjektum) //Az objeltum elemei
+
+    /**
+     * @type {HTMLTableSectionElement}  //Típus megadása
+     */
+    const tBody = document.getElementById("htmlBody") //Tbody lekérése
+    ujSorHozzaAd(ujObjektum, tBody) //Új sor hozzáadása
+
+    // Űrlap mezők törlése
+    inputSzerzo.value = "" //Értékeke törlése
+    inputMu.value = "" //Értékeke törlése
+    inputFogalomElso.value = "" //Értékeke törlése
+    inputFogalomMasodik.value = "" //Értékeke törlése
+    }
 })

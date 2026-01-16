@@ -51,7 +51,7 @@ function cellaLetrehozas(tartalom, parent){ //Függvény definiálása
  */
 function tablaKiiras(adatTomb, body){  //Függvény deklarálása
 
-    body.innerHTML = "" //A body ürítése hogy ne írja ki az egész függvényt mindig
+     body.innerHTML = ""; //A body ürítése hogy ne írja ki az egész függvényt mindig
 
     for(const a of adatTomb){  //Adat tömb bejárása
         
@@ -119,7 +119,7 @@ function ujSorHozzaAd(ujSor, tableBody){ //Függvény definiálása
      */
     const cell3 = cellaLetrehozas(ujSor.fogalmak1, row); //Cella létrehozása
 
-    if(ujSor.fogalmak2){ //Megnézzük fogalmak 2 undefined e
+    if(newRow.work2 || newRow.concept2){  //Megnézzük fogalmak 2 undefined e
      /**
      * @type {HTMLTableCellElement} //Cella típus
      */
@@ -185,6 +185,7 @@ function checkBoxFrissit(input){ //A függvény definiálása
  * @returns {void} //Amivel visszatér a függvény
  */
 function formGeneralas(cimkeSzoveg, id, nev, form){ //Függvény deklarálás
+
     /**
      * @type {HTMLDivElement} //Típus megadása
      */
@@ -265,4 +266,69 @@ function formAdatFeltoltes(section){ //Függvény definiálás
     formGomb.innerText = "Hozzáad" //Gomsz szövegének megadása
     jsForm.appendChild(formGomb) //Gomb formhoz fűzése
     return jsForm //Kész form
+}
+
+
+
+/**
+ * Függvény a form mezőinek vizsgálatára
+ * @param {HTMLInputElement} bemenet //Input mező típusa
+ * @param {string} error //Az error üzenet
+ * @returns {boolean} //Visszatérési érték
+ */
+function mezokVizsgalata(bemenet, error){ //Függvény deklarálás
+
+    /**
+     * @type {boolean} //Típus megadása
+     */
+    let valid = true //Valid alapból igaz
+    if(bemenet.value == ""){ //Ha az input üres
+        /**
+         * @type {HTMLDivElement} //Típus megadása
+         */
+        const inputParent = bemenet.parentElement //InpuParent létrehozása
+
+        /**
+         * @type {HTMLDivElement} //Típus megadása
+         */
+        const errorDiv = inputParent.querySelector(".error") //Error div lekérése
+        errorDiv.innerText = error //Feltöltése szöveggel
+        valid = false //Valid hamisra állítása
+    }
+    return valid //Vissztér ezzel a függvény
+};
+
+
+
+/**
+ * Validálja az inputokat és ha invalid hibaüzenetet ad
+ * @param {HTMLInputElement} inputSzerzo //Szerző input típus
+ * @param {HTMLInputElement} inputMuElso //Mű input típus
+ * @param {HTMLInputElement} inputFogalomElso //Fogalom 1 input típus
+ * @param {HTMLFormElement} form //A form típusa
+ * @returns {boolean} //Bool visszatérési érték
+ */
+function osszMezoValidalas(inputSzerzo, inputMuElso, inputFogalomElso, form){  //Func deklarálása és paraméterek megadása
+    
+    /**
+     * @type {boolean} //Típus megadása
+     */
+    let valid = true //Igaz érték adása a valid nak
+
+    
+    /**
+     * @type {NodeList} //Típus megadása
+     */
+    const errorDivList = form.querySelectorAll(".error") //Error class lekérése
+    for(const errorDiv of errorDivList){ //Error div lista bejárása
+        errorDiv.innerText = "" //Error ürítése
+    }
+
+    if(!mezokVizsgalata(inputSzerzo, "Szerző kitöltése kötelező")){ valid = false} //Függvény meghívása és paraméterek megadása
+
+    if(!mezokVizsgalata(inputMuElso, "Mű kitöltése kötelező")){valid = false} //Függvény meghívása és paraméterek megadása
+
+    if(!mezokVizsgalata(inputFogalomElso, "Fogalom1 kitöltése kötelező")){valid = false} //Függvény meghívása és paraméterek megadása
+
+    return valid //Visszatér a valid bool értékével
 }
